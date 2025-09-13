@@ -12,3 +12,6 @@ src/**
 *.user
 *.userosscache
 *.sln.docstates
+
+/.vs/
+vs/**
