@@ -1,6 +1,8 @@
 // Задача: Перегрузка индексаторов — Grid<T>
 // Реализуйте индексаторы: [row, col], по структуре Cell и по одномерному индексу [index] (row-major).
 
+using System.Runtime.CompilerServices;
+
 namespace App.IndexerOverloading.Task2_TwoDimGrid;
 
 public readonly struct Cell
@@ -9,7 +11,8 @@ public readonly struct Cell
     public int Col { get; }
     public Cell(int row, int col)
     {
-        throw new NotImplementedException();
+        this.Row = row;
+        this.Col = col;
     }
 }
 
@@ -20,7 +23,8 @@ public class Grid<T>
 
     public Grid(int rows, int cols)
     {
-        throw new NotImplementedException();
+        this.Rows = rows;
+        this.Cols = Cols;
     }
 
     public T this[int row, int col]

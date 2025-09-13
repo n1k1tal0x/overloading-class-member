@@ -14,22 +14,19 @@ public static class NumberParser
     /// Разбирает строку в int. При неверном формате должен кидать FormatException
     public static int Parse(string s)
     {
-        try
+        int res;
+        if (int.TryParse(s, out res))
         {
-            return Convert.ToInt32(s);
+            return res;
         }
-        catch
-        {
-            throw new FormatException();
-        }
+        throw new FormatException();
     }
 
     /// Разбирает строку в int. При неверном формате возвращает defaultValue
     public static int Parse(string s, int defaultValue)
     {
         int res;
-        
-        if (int.TryParse(s, out res))
+        if (int.TryParse(s.Trim(), out res))
         {
             return res;
         }
@@ -43,6 +40,6 @@ public static class NumberParser
     /// ВАЖНО: Эта перегрузка считается дополнительной (*) повышенной сложности (работа с культурами/стилями).
     public static int Parse(string s, NumberStyles style, IFormatProvider provider)
     {
-        throw new NotImplementedException();
+        return int.Parse(s, style, provider);
     }
 }
