@@ -27,11 +27,13 @@ public class Point2D
     public Point2D(string s)
     {
         if (s == null || s == "") {
-            this.X = 0;
-            this.Y = 0;
-            return;
+            throw new FormatException();
         }
         string[] tmp = s.Split(';');
+        if (tmp.Length > 2)
+        {
+            throw new FormatException();
+        }
         this.X = Convert.ToInt32(tmp[0]);
         this.Y = Convert.ToInt32(tmp[1]);
     }

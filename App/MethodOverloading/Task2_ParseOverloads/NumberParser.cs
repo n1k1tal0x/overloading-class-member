@@ -33,7 +33,7 @@ public static class NumberParser
         }
         catch
         {
-            return default;
+            return defaultValue;
         }
     }
 
