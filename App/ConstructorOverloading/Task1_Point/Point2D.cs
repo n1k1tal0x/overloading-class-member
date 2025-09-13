@@ -26,10 +26,10 @@ public class Point2D
     // Конструктор из строки "x;y" (пробелы допустимы)
     public Point2D(string s)
     {
-        if (s == null || s == "") {
+        if (string.IsNullOrEmpty(s)) {
             throw new FormatException();
         }
-        string[] tmp = s.Split(';');
+        string[] tmp = s.Trim().Split(';');
         if (tmp.Length > 2)
         {
             throw new FormatException();

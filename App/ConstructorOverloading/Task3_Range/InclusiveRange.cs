@@ -27,11 +27,13 @@ public class InclusiveRange
         {
             throw new FormatException();
         }
-        if (Convert.ToInt32(tmp[0]) > Convert.ToInt32(tmp[1])){
+        int tmp1 = Convert.ToInt32(tmp[0]);
+        int tmp2 = Convert.ToInt32(tmp[1]);
+        if (tmp1 >tmp2){
             throw new ArgumentOutOfRangeException(); 
         }
-        this.Start = Convert.ToInt32(tmp[0]);
-        this.End = Convert.ToInt32(tmp[1]);        
+        this.Start = tmp1;
+        this.End = tmp2;        
     }
 
     // Конструктор из одного числа

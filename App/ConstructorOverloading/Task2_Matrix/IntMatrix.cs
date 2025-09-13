@@ -7,30 +7,47 @@ namespace App.ConstructorOverloading.Task2_Matrix;
 public class IntMatrix
 {
     // Размеры матрицы
-    public int RowCount { get; }
-    public int ColCount { get; }
+    private int[,] _array;
+    public int RowCount { get { return this._array.GetUpperBound(0) + 1; } }
+    public int ColCount { get { return this._array.GetUpperBound(1) + 1; } }
 
     // Индексатор для проверки значений в тестах
     public int this[int row, int col]
     {
-        get => throw new NotImplementedException();
+        get => _array[row, col];
     }
 
     // Конструктор (rows, cols) — заполняет нулями
     public IntMatrix(int rows, int cols)
     {
-        throw new NotImplementedException();
+        if (rows < 1 || cols < 1) throw new ArgumentException();
+        this._array = new int[rows, cols];
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                this._array[i, j] = 0;
+            }
+        }
     }
 
     // Конструктор из прямоугольного массива
     public IntMatrix(int[,] data)
     {
-        throw new NotImplementedException();
+        this._array = data;
     }
 
     // Конструктор из ступенчатого массива (все строки должны быть одинаковой длины)
     public IntMatrix(int[][] data)
     {
-        throw new NotImplementedException();
+        if (data[0].Length != data[1].Length) throw new ArgumentException();
+        this._array = new int[data.Length, data[0].Length];
+        for (int i = 0; i < data.Length; i++)
+        {
+            for (int j = 0; j < data[0].Length; j++)
+            {
+                this._array[i, j] = data[i][j];
+            }
+        }
     }
 }

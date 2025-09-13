@@ -27,11 +27,13 @@ public static class NumberParser
     /// Разбирает строку в int. При неверном формате возвращает defaultValue
     public static int Parse(string s, int defaultValue)
     {
-        try
+        int res;
+        
+        if (int.TryParse(s, out res))
         {
-            return Convert.ToInt32(s);
+            return res;
         }
-        catch
+        else
         {
             return defaultValue;
         }
